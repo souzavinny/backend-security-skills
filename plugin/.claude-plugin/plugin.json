@@ -1,0 +1,31 @@
+{
+  "name": "backend-security-skills",
+  "version": "0.2.2",
+  "description": "Security auditor for Node.js and Python backend APIs. Four skills: pre-audit reconnaissance, static code audit with 8 parallel OWASP API Top 10 agents, and live HTTP probing that verifies findings with reproducible curl transcripts. Outputs markdown or JSON with severity, CWE, and OWASP tags per finding. Built for Express, NestJS, Fastify, Koa, Next.js, FastAPI, Django, Flask, and Starlette.",
+  "author": {
+    "name": "Marcus Souza"
+  },
+  "license": "MIT",
+  "keywords": [
+    "security",
+    "audit",
+    "api",
+    "backend",
+    "nodejs",
+    "python",
+    "express",
+    "nestjs",
+    "fastify",
+    "fastapi",
+    "django",
+    "flask",
+    "owasp",
+    "owasp-api-top-10",
+    "bola",
+    "sast",
+    "dast",
+    "pentest",
+    "llm-security",
+    "prompt-injection"
+  ]
+}

@@ -1,0 +1,50 @@
+# runtime-audit.yaml — example config
+#
+# Drop this file at the root of your target repo (not inside this skills repo).
+# With it present, `runtime audit` is fully automatic — no interactive prompts.
+#
+# Minimal valid config is just `target:`. Everything else is optional.
+#
+# See runtime-audit/references/startup.md for the full schema.
+
+# ── Target ───────────────────────────────────────────────────────────────
+# Required. Where the skill sends probes.
+target: http://localhost:3000
+
+# ── Tier ─────────────────────────────────────────────────────────────────
+# Optional. Default auto-detect from hostname.
+# local | staging | prod
+tier: local
+
+# ── Startup (optional) ───────────────────────────────────────────────────
+# Omit this whole block to require an already-running server.
+start:
+  command: pnpm dev
+  env_file: .env.test
+  wait_for: http://localhost:3000/health
+  timeout: 30
+
+# ── Authentication (optional) ────────────────────────────────────────────
+auth:
+  primary:
+    header: X-API-Key
+    value_env: TARGET_KEY_A      # reads env var; never commit literal secrets
+  secondary:
+    header: X-API-Key
+    value_env: TARGET_KEY_B
+
+# ── Bands & scope ────────────────────────────────────────────────────────
+# Opt in to mutating probes. Default false.
+destructive: false
+
+# Paths to skip entirely. Good for endpoints that trigger paid external services.
+skip_paths:
+  - /api/v1/certify              # costs LLM + DB + on-chain tx
+  - /api/v1/admin/review/*       # writes on-chain decisions
+  - /api/v1/send-*               # emails / SMS
+
+# ── Rate ─────────────────────────────────────────────────────────────────
+# Self-throttle. Skill never exceeds these.
+rate:
+  per_second: 1
+  burst: 10

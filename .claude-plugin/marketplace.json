@@ -1,0 +1,20 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "backend-security-skills",
+  "owner": {
+    "name": "Marcus Souza"
+  },
+  "metadata": {
+    "description": "Backend API security skills — static + dynamic auditors for Node.js and Python APIs.",
+    "homepage": "https://github.com/souzavinny/backend-security-skills"
+  },
+  "plugins": [
+    {
+      "name": "backend-security-skills",
+      "version": "0.2.2",
+      "source": "./plugin",
+      "description": "Security auditor for Node.js and Python backend APIs. Four skills covering pre-audit reconnaissance, static code audit with 8 parallel agents across OWASP API Top 10, and live HTTP probing that verifies findings with reproducible curl transcripts.",
+      "category": "security"
+    }
+  ]
+}

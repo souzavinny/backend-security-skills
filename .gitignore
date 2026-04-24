@@ -1,0 +1,22 @@
+node_modules/
+.venv/
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+.env
+.env.local
+
+# user-local Claude Code settings
+.claude/settings.local.json
+
+# claude-mem auto-generated activity logs (any depth)
+**/CLAUDE.md
+
+# eval artifacts — results are reproducible, don't track
+*/evals/results/
+/tmp/
+
+# audit output destinations (these are per-run artifacts)
+*/assets/findings/*.md
+!*/assets/findings/README.md
